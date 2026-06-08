@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificado de Adopción — Refugio de Animales</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary:#1a3c34; --accent:#2d9f7f; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'DM Sans',sans-serif; background:#f5f7fa; color:#1a2e28; padding:2rem; }
+    .toolbar { text-align:center; margin-bottom:1.5rem; }
+    .toolbar button, .toolbar a { display:inline-block; margin:0 .5rem; padding:10px 20px; border-radius:10px; border:none; background:var(--accent); color:#fff; font-weight:700; cursor:pointer; text-decoration:none; font-family:'Nunito',sans-serif; }
+    .cert {
+      max-width:800px; margin:0 auto; background:#fff; border:3px solid var(--primary);
+      border-radius:4px; padding:3rem; box-shadow:0 8px 32px rgba(0,0,0,.08);
+    }
+    .cert-header { text-align:center; border-bottom:2px solid var(--primary); padding-bottom:1.5rem; margin-bottom:2rem; }
+    .cert-header h1 { font-family:'Nunito',sans-serif; font-size:1.8rem; color:var(--primary); }
+    .cert-header p { color:#6b7c76; margin-top:.5rem; }
+    .cert-body p { line-height:1.8; margin-bottom:1rem; }
+    .cert-data { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
+    .cert-data div { background:#f8faf9; padding:1rem; border-radius:10px; }
+    .cert-data strong { display:block; font-size:.75rem; text-transform:uppercase; color:#6b7c76; margin-bottom:4px; }
+    .laws { margin-top:2rem; padding-top:1.5rem; border-top:1px solid #e2e8e6; }
+    .laws h2 { font-family:'Nunito',sans-serif; font-size:1.1rem; margin-bottom:1rem; color:var(--primary); }
+    .laws ul { padding-left:1.25rem; color:#444; line-height:1.8; font-size:.92rem; }
+    .laws li { margin-bottom:.75rem; }
+    .firma { margin-top:2.5rem; display:flex; justify-content:space-between; gap:2rem; }
+    .firma div { flex:1; text-align:center; border-top:1px solid #333; padding-top:.5rem; font-size:.85rem; }
+    .codigo { text-align:center; margin-top:1.5rem; font-family:'Nunito',sans-serif; font-weight:800; color:var(--accent); }
+    .loading { text-align:center; padding:3rem; color:#6b7c76; }
+    .buscar-cert {
+      max-width:480px; margin:2rem auto; background:#fff; border-radius:12px; padding:1.5rem;
+      box-shadow:0 4px 20px rgba(0,0,0,.06); text-align:center;
+    }
+    .buscar-cert input {
+      width:100%; padding:12px 14px; border:1px solid #d8e0dc; border-radius:10px;
+      margin:12px 0; font-size:1rem;
+    }
+    .buscar-cert p { color:#6b7c76; font-size:.95rem; line-height:1.5; }
+    @media print {
+      body { background:#fff; padding:0; }
+      .toolbar, .buscar-cert { display:none; }
+      .cert { box-shadow:none; border-width:2px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button onclick="window.print()">🖨️ Imprimir certificado</button>
+    <a id="btn-pdf" href="#" target="_blank">📄 Descargar PDF</a>
+    <a href="usuario.html#mi-solicitud">Volver a mi solicitud</a>
+  </div>
+  <div id="buscar-cert" class="buscar-cert" hidden>
+    <h2 style="font-family:'Nunito',sans-serif;color:var(--primary);margin-bottom:.5rem;">Consultar certificado</h2>
+    <p>Ingrese el código que aparece en <strong>Mi solicitud</strong> (ej: CERT-2026-00001)</p>
+    <input id="input-codigo" type="text" placeholder="CERT-2026-00001" autocomplete="off">
+    <button class="toolbar" style="margin:0" onclick="buscarPorCodigo()">Ver certificado</button>
+  </div>
+  <div id="contenido" class="loading">Cargando certificado...</div>
+
+  <script>
+    function obtenerCodigo() {
+      const params = new URLSearchParams(location.search);
+      let codigo = (params.get('codigo') || '').trim();
+      if (codigo) return codigo;
+
+      const hash = location.hash.replace(/^#/, '');
+      if (hash.startsWith('codigo=')) {
+        codigo = decodeURIComponent(hash.slice(7)).trim();
+        if (codigo) return codigo;
+      }
+
+      const guardado = sessionStorage.getItem('refugio_certificado_codigo');
+      if (guardado) return guardado.trim();
+
+      return '';
+    }
+
+    let codigo = obtenerCodigo();
+
+    function actualizarEnlaces() {
+      if (!codigo) return;
+      document.getElementById('btn-pdf').href =
+        '/api/certificado_pdf.php?codigo=' + encodeURIComponent(codigo);
+      if (!location.search.includes('codigo=')) {
+        const nuevaUrl = `${location.pathname}?codigo=${encodeURIComponent(codigo)}`;
+        history.replaceState(null, '', nuevaUrl);
+      }
+    }
+
+    function mostrarBuscador() {
+      document.getElementById('buscar-cert').hidden = false;
+      document.getElementById('contenido').innerHTML =
+        '<p class="loading">Ingrese su código de certificado para continuar.</p>';
+    }
+
+    function buscarPorCodigo() {
+      const val = document.getElementById('input-codigo').value.trim();
+      if (!val) return;
+      codigo = val;
+      sessionStorage.setItem('refugio_certificado_codigo', codigo);
+      location.href = `certificado.html?codigo=${encodeURIComponent(codigo)}`;
+    }
+
+    async function cargar() {
+      if (!codigo) {
+        mostrarBuscador();
+        return;
+      }
+
+      actualizarEnlaces();
+      document.getElementById('contenido').innerHTML = '<p class="loading">Cargando certificado...</p>';
+
+      try {
+        const res = await fetch('/api/certificado.php?codigo=' + encodeURIComponent(codigo));
+        const d = await res.json();
+        if (!res.ok) throw new Error(d.error || 'Certificado no encontrado');
+
+        sessionStorage.setItem('refugio_certificado_codigo', d.certificado_codigo || codigo);
+        document.getElementById('buscar-cert').hidden = true;
+
+        document.getElementById('contenido').innerHTML = `
+          <div class="cert">
+            <div class="cert-header">
+              <h1>CERTIFICADO DE ADOPCIÓN RESPONSABLE</h1>
+              <p>Refugio de Animales — Documento oficial de traslado de custodia</p>
+              <p class="codigo">${d.certificado_codigo}</p>
+            </div>
+            <div class="cert-body">
+              <p>Por medio del presente documento se certifica que el día <strong>${formatDate(d.fecha_adopcion)}</strong>,
+              el adoptante <strong>${d.adoptante}</strong>, identificado(a) con cédula <strong>${d.cedula}</strong>,
+              ha adoptado de forma responsable al animal <strong>${d.animal}</strong> (${d.nombre_especie}${d.raza ? ', raza ' + d.raza : ''}),
+              quedando bajo su cuidado permanente.</p>
+              <div class="cert-data">
+                <div><strong>Adoptante</strong>${d.adoptante}</div>
+                <div><strong>Animal</strong>${d.animal}</div>
+                <div><strong>Fecha adopción</strong>${formatDate(d.fecha_adopcion)}</div>
+                <div><strong>Visitas de seguimiento</strong>${d.frecuencia_visitas || 'Según calendario del refugio'}</div>
+                <div><strong>Próxima visita</strong>${formatDate(d.proxima_visita)}</div>
+                <div><strong>Responsable refugio</strong>${d.empleado}</div>
+              </div>
+              <p>El adoptante se compromete a garantizar el bienestar, alimentación, salud, protección y trato digno del animal,
+              conforme a la normativa vigente de protección animal.</p>
+            </div>
+            <div class="laws">
+              <h2>Marco legal vigente que avala esta adopción</h2>
+              <ul>
+                <li><strong>Ley 84 de 1989</strong> — Estatuto Nacional de Protección de los Animales. Establece deberes de protección, prohibición de maltrato y responsabilidad del tenedor sobre el bienestar del animal.</li>
+                <li><strong>Ley 1774 de 2016</strong> — Reconoce a los animales como seres sintientes y modifica el Código Civil para exigir protección conforme a su especie y trato sin crueldad.</li>
+                <li><strong>Decreto 1073 de 2015</strong> — Reglamenta aspectos de bienestar animal y las obligaciones de quienes tienen animales bajo su cuidado.</li>
+                <li><strong>Ley 1801 de 2016 (Código de Convivencia)</strong> — Contempla deberes de tenencia responsable de mascotas y sanciones por abandono o maltrato.</li>
+              </ul>
+            </div>
+            <div class="firma">
+              <div>Firma adoptante</div>
+              <div>Firma representante refugio</div>
+            </div>
+          </div>`;
+      } catch (e) {
+        document.getElementById('contenido').innerHTML = `<p class="loading">${e.message}</p>`;
+        document.getElementById('buscar-cert').hidden = false;
+        document.getElementById('input-codigo').value = codigo;
+      }
+    }
+
+    function formatDate(s) {
+      if (!s) return '—';
+      const str = String(s).split('T')[0].split(' ')[0];
+      const [y, m, d] = str.split('-');
+      return y && m && d ? `${d}/${m}/${y}` : str;
+    }
+
+    document.getElementById('input-codigo')?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') buscarPorCodigo();
+    });
+
+    cargar();
+  </script>
+</body>
+</html>
