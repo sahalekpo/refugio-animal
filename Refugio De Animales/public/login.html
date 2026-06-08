@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso Administrador — Refugio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body { display:flex; align-items:center; justify-content:center; min-height:100vh; background:#f5f7fa; }
+    .login-card { background:#fff; border-radius:20px; padding:2.5rem; width:100%; max-width:400px; box-shadow:0 8px 32px rgba(26,60,52,.1); border:1px solid #e2e8e6; }
+    .login-card h1 { font-family:'Nunito',sans-serif; font-size:1.5rem; margin-bottom:.5rem; }
+    .login-card p { color:#6b7c76; margin-bottom:1.5rem; font-size:.95rem; }
+    .form-group { margin-bottom:1rem; }
+    .form-group label { display:block; font-weight:600; font-size:.85rem; margin-bottom:6px; font-family:'Nunito',sans-serif; }
+    .form-group input { width:100%; padding:12px 14px; border:1px solid #e2e8e6; border-radius:10px; font-size:.95rem; }
+    .btn-block { width:100%; margin-top:.5rem; }
+    .error { background:#fdecea; color:#e76f51; padding:10px 14px; border-radius:10px; font-size:.9rem; margin-bottom:1rem; display:none; }
+    .hint { font-size:.82rem; color:#6b7c76; margin-top:1rem; text-align:center; }
+    .hint a { color:#1f7a60; }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <h1>🐾 Panel Administrativo</h1>
+    <p>Acceso restringido para personal del refugio</p>
+    <div class="error" id="error"></div>
+    <form id="login-form">
+      <div class="form-group">
+        <label>Usuario</label>
+        <input name="usuario" value="admin" required autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input name="contrasena" type="password" required autocomplete="current-password" placeholder="Admin2025!">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+    </form>
+    <p class="hint">Primera vez: abra <a href="/api/migrate.php" target="_blank">migrate.php</a> para clave <strong>Admin2025!</strong></p>
+    <p class="hint"><a href="usuario.html">← Volver al portal público</a></p>
+  </div>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const body = Object.fromEntries(fd.entries());
+      const err = document.getElementById('error');
+      try {
+        const res = await fetch('/api/auth.php?action=login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify(body)
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error);
+        window.location.href = 'index.html';
+      } catch (ex) {
+        err.style.display = 'block';
+        err.textContent = ex.message;
+      }
+    });
+  </script>
+</body>
+</html>

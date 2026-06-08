@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adopta un amigo — Refugio de Animales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/usuario.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="usuario.html" class="logo">
+        <span class="logo-icon">🐾</span>
+        <span id="header-nombre">Refugio de Animales</span>
+      </a>
+      <nav class="header-nav">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#animales">Adoptar</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#mi-solicitud">Mi solicitud</a>
+        <a href="#apoyar">Apoyar</a>
+        <a href="#voluntariado">Voluntariado</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg" id="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <div class="hero-content reveal">
+        <span class="hero-tag">Adopción responsable · Bienestar animal</span>
+        <h1>Dales un hogar lleno de <em>amor</em></h1>
+        <p id="hero-descripcion" class="hero-lead">
+          Cada animal en nuestro refugio merece una segunda oportunidad. Explora perfiles con fotos,
+          conoce su historia y completa una encuesta de postulación. Nuestro equipo evaluará tu solicitud
+          con criterios de bienestar y visitas de seguimiento post-adopción.
+        </p>
+        <div class="hero-cta">
+          <a href="#animales" class="btn btn-primary btn-lg">Ver animales disponibles</a>
+          <a href="#como-funciona" class="btn btn-outline btn-lg">Cómo adoptar</a>
+        </div>
+        <div class="hero-mini-stats">
+          <div><strong id="hero-stat-adoptados">—</strong><span>Adoptados</span></div>
+          <div><strong id="hero-stat-total">—</strong><span>En el refugio</span></div>
+          <div><strong id="hero-stat-postulaciones">—</strong><span>Postulaciones</span></div>
+        </div>
+      </div>
+      <div class="hero-aside reveal">
+        <div class="hero-stat-card">
+          <strong id="stat-disponibles">—</strong>
+          <span>mascotas listas para un nuevo hogar</span>
+        </div>
+        <ul class="hero-features">
+          <li>✓ Proceso transparente con encuesta</li>
+          <li>✓ Certificado de adopción responsable</li>
+          <li>✓ Visitas de seguimiento al hogar</li>
+        </ul>
+        <a href="#mi-solicitud" class="hero-link-card">
+          <span>📋</span>
+          <div>
+            <strong>¿Ya postulaste?</strong>
+            <small>Consulta tu solicitud con tu cédula</small>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span>Desliza para explorar</span>
+      <span class="scroll-arrow">↓</span>
+    </div>
+    <div class="hero-bridge">
+      <svg class="hero-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,40 C360,90 720,0 1080,40 C1260,60 1380,50 1440,45 L1440,80 L0,80 Z" fill="currentColor"/>
+      </svg>
+      <div class="container hero-bridge-stats">
+        <div class="bridge-stat reveal"><span class="bridge-stat-num" id="bar-disponibles">—</span><span>Disponibles</span></div>
+        <div class="bridge-stat reveal"><span class="bridge-stat-num" id="bar-adoptados">—</span><span>Adoptados</span></div>
+        <div class="bridge-stat reveal"><span class="bridge-stat-num">100%</span><span>Veterinaria</span></div>
+        <div class="bridge-stat reveal"><span class="bridge-stat-num">24/7</span><span>Compromiso</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros" class="section-about-v2">
+    <div class="about-filmstrip-wrap" aria-hidden="true">
+      <div class="about-filmstrip" id="about-filmstrip"></div>
+    </div>
+
+    <div class="container about-shell">
+      <div class="about-header reveal">
+        <span class="section-label">Sobre nosotros</span>
+        <h2>Un refugio con <em>propósito</em></h2>
+        <p class="about-tagline" id="about-descripcion">Somos una organización dedicada al rescate, rehabilitación y adopción responsable.</p>
+      </div>
+
+      <div class="about-layout">
+        <div class="about-story reveal">
+          <div class="about-story-card">
+            <div class="about-story-badge">Nuestra misión</div>
+            <p id="about-mision" class="about-mision-text">Promover el bienestar animal y hogares responsables.</p>
+            <div class="about-values-grid">
+              <div class="value-chip">
+                <span class="value-icon">◆</span>
+                <div><strong>Respeto</strong><small>Cada vida importa</small></div>
+              </div>
+              <div class="value-chip">
+                <span class="value-icon">◆</span>
+                <div><strong>Transparencia</strong><small>Proceso claro</small></div>
+              </div>
+              <div class="value-chip">
+                <span class="value-icon">◆</span>
+                <div><strong>Compromiso</strong><small>Seguimiento real</small></div>
+              </div>
+            </div>
+            <a href="#animales" class="about-cta-link">Conoce a quienes esperan un hogar →</a>
+          </div>
+        </div>
+
+        <div class="about-bento reveal">
+          <div class="bento-hero-photo" id="about-photo-main">
+            <div class="bento-photo-overlay">
+              <span class="bento-live-dot"></span>
+              <span>Vida en el refugio</span>
+            </div>
+          </div>
+          <div class="bento-thumb bento-thumb-a" id="about-thumb-a"></div>
+          <div class="bento-thumb bento-thumb-b" id="about-thumb-b"></div>
+          <div class="bento-quote">
+            <blockquote>“Adoptar no es un acto de caridad, es un pacto de amor y responsabilidad.”</blockquote>
+          </div>
+        </div>
+
+        <div class="about-pillars reveal">
+          <article class="pillar-card" data-pillar="0">
+            <div class="pillar-icon">01</div>
+            <h4>Rescate y rehabilitación</h4>
+            <p>Recibimos animales abandonados o en riesgo y les brindamos atención veterinaria integral.</p>
+            <span class="pillar-line"></span>
+          </article>
+          <article class="pillar-card" data-pillar="1">
+            <div class="pillar-icon">02</div>
+            <h4>Adopción con seguimiento</h4>
+            <p>Acompañamos cada familia con visitas, orientación y certificado de adopción responsable.</p>
+            <span class="pillar-line"></span>
+          </article>
+          <article class="pillar-card" data-pillar="2">
+            <div class="pillar-icon">03</div>
+            <h4>Marco legal</h4>
+            <p>Certificados bajo Ley 84/1989 y Ley 1774/2016 — protección y bienestar garantizado.</p>
+            <span class="pillar-line"></span>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-historias section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Historias reales</span>
+        <h2>Ellos ya encontraron hogar</h2>
+        <p>Cada adopción es una historia de esperanza. Tú también puedes ser parte del cambio.</p>
+      </div>
+      <div class="historias-grid reveal" id="historias-grid">
+        <div class="skeleton-historias" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="animales" class="section section-animales">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Encuentra tu compañero</span>
+        <h2>Animales en adopción</h2>
+        <p>Solo mascotas con estado <strong>Disponible</strong>. Explora por categoría o usa los filtros.</p>
+      </div>
+
+      <div class="catalog-tabs reveal" id="catalog-tabs" role="tablist">
+        <button type="button" class="catalog-tab active" data-tab="destacados" role="tab">⭐ Destacados</button>
+        <button type="button" class="catalog-tab" data-tab="nuevos" role="tab">🆕 Nuevos ingresos</button>
+        <button type="button" class="catalog-tab" data-tab="todos" role="tab">🐾 Todos</button>
+      </div>
+
+      <div class="catalog-panel active" id="panel-destacados" data-panel="destacados">
+        <div class="catalog-panel-head">
+          <h3>Más destacados</h3>
+          <p>Con fotos recientes o recién llegados al refugio</p>
+        </div>
+        <div class="animals-scroll" id="scroll-destacados"><div class="skeleton-scroll" aria-hidden="true"></div></div>
+      </div>
+
+      <div class="catalog-panel" id="panel-nuevos" data-panel="nuevos">
+        <div class="catalog-panel-head">
+          <h3>Recién llegados</h3>
+          <p>Ingresaron en los últimos 30 días — ¡conócelos primero!</p>
+        </div>
+        <div class="animals-scroll" id="scroll-nuevos"><div class="skeleton-scroll" aria-hidden="true"></div></div>
+      </div>
+
+      <div class="catalog-panel" id="panel-todos" data-panel="todos">
+        <div class="catalog-panel-head">
+          <h3>Todos los disponibles</h3>
+          <p id="catalog-count">— mascotas esperando hogar</p>
+        </div>
+        <div class="filters filters-pro">
+          <input type="text" id="buscar" placeholder="🔍 Buscar por nombre, especie o raza...">
+          <select id="filtro-especie"><option value="">Perros y gatos</option></select>
+          <select id="filtro-orden">
+            <option value="reciente">Más recientes</option>
+            <option value="nombre">Nombre A-Z</option>
+            <option value="edad">Menor edad</option>
+          </select>
+        </div>
+        <div class="animals-grid" id="animals-grid">
+          <div class="skeleton-grid" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mi-solicitud" class="section section-mi-solicitud">
+    <div class="container">
+      <div class="section-head">
+        <h2>Mi solicitud de adopción</h2>
+        <p>Consulte el estado de su postulación con su <strong>cédula</strong>. Si fue aprobada, aquí podrá ver y descargar su certificado oficial.</p>
+      </div>
+      <div class="consulta-box card-consulta">
+        <form id="form-consulta-cedula" class="consulta-form">
+          <div class="form-group">
+            <label>Número de cédula</label>
+            <input type="text" id="consulta-cedula" name="cedula" required placeholder="Ej: 1234567890" autocomplete="off">
+          </div>
+          <button type="submit" class="btn btn-primary">Consultar estado</button>
+        </form>
+        <div id="resultado-solicitud" class="resultado-solicitud" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Paso a paso</span>
+        <h2>¿Cómo adoptar?</h2>
+        <p>Un proceso sencillo, transparente y con acompañamiento legal y emocional.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal interactive-card">
+          <span class="step-num">1</span>
+          <h3>Elige un animal</h3>
+          <p>Revisa el carrusel de fotos, descripción y datos de cada mascota disponible.</p>
+        </div>
+        <div class="step reveal interactive-card">
+          <span class="step-num">2</span>
+          <h3>Completa la encuesta</h3>
+          <p>Responde preguntas sobre tu hogar, experiencia y motivación de adopción.</p>
+        </div>
+        <div class="step reveal interactive-card">
+          <span class="step-num">3</span>
+          <h3>En proceso de adopción</h3>
+          <p>Al enviar la encuesta, el animal queda reservado mientras el refugio evalúa tu postulación.</p>
+        </div>
+        <div class="step reveal interactive-card">
+          <span class="step-num">4</span>
+          <h3>Certificado legal</h3>
+          <p>Si es aprobada, recibes el certificado de adopción responsable con el marco legal vigente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section section-faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Preguntas frecuentes</span>
+        <h2>¿Tienes dudas?</h2>
+      </div>
+      <div class="faq-list reveal" id="faq-list">
+        <details class="faq-item" open>
+          <summary>¿Cuánto cuesta adoptar?</summary>
+          <p>La adopción es simbólica. Puede haber una contribución opcional para cubrir vacunas o esterilización, según el caso del animal.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Puedo adoptar si vivo en apartamento?</summary>
+          <p>Sí, si el animal es compatible con espacios reducidos. La encuesta nos ayuda a evaluar si tu hogar es adecuado.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué pasa después de postularme?</summary>
+          <p>El animal queda en proceso de adopción. Revisamos tu encuesta y te contactamos. Puedes consultar el estado en <a href="#mi-solicitud">Mi solicitud</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Por qué hay visitas de seguimiento?</summary>
+          <p>Queremos asegurarnos de que la mascota esté bien adaptada y reciba el cuidado que merece. Es parte de la adopción responsable.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="apoyar" class="section section-apoyar section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Apoya nuestra causa</span>
+        <h2>Donaciones y apadrinamiento</h2>
+        <p>Tu aporte ayuda a cubrir alimento, veterinaria y cuidado diario. También puedes apadrinar a un animal específico.</p>
+      </div>
+      <div class="apoyar-layout reveal">
+        <div class="apoyar-cards">
+          <article class="apoyar-card">
+            <span class="apoyar-icon">💚</span>
+            <h3>Donación general</h3>
+            <p>Contribuye con el monto que desees para el bienestar de todos nuestros rescatados.</p>
+            <ul class="apoyar-montos">
+              <li>$20.000 — Alimento por una semana</li>
+              <li>$50.000 — Vacunas básicas</li>
+              <li>$100.000 — Esterilización</li>
+            </ul>
+          </article>
+          <article class="apoyar-card apoyar-card--accent">
+            <span class="apoyar-icon">🐾</span>
+            <h3>Apadrina un animal</h3>
+            <p>Elige una mascota del refugio y apoya su cuidado mensual mientras espera hogar.</p>
+          </article>
+        </div>
+        <form id="form-donacion" class="apoyar-form card-consulta">
+          <h3>Solicitar información</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Tipo de apoyo *</label>
+              <select name="tipo" id="donacion-tipo" required>
+                <option value="Donacion">Donación general</option>
+                <option value="Apadrinamiento">Apadrinamiento</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Nombre completo *</label>
+              <input name="nombres" required placeholder="Tu nombre">
+            </div>
+          </div>
+          <div class="form-group" id="donacion-animal-wrap" hidden>
+            <label>Animal a apadrinar *</label>
+            <select name="id_animal" id="donacion-animal"></select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Correo</label>
+              <input name="correo" type="email" placeholder="tu@correo.com">
+            </div>
+            <div class="form-group">
+              <label>Teléfono / WhatsApp</label>
+              <input name="telefono" type="tel" placeholder="+57 300 000 0000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Monto de interés (opcional)</label>
+            <select name="monto_sugerido">
+              <option value="">A definir con el refugio</option>
+              <option value="$20.000">$20.000</option>
+              <option value="$50.000">$50.000</option>
+              <option value="$100.000">$100.000</option>
+              <option value="Otro">Otro monto</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mensaje</label>
+            <textarea name="mensaje" rows="3" placeholder="Cuéntanos cómo te gustaría apoyar..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Enviar solicitud de apoyo</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="voluntariado" class="section section-voluntariado">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Únete al equipo</span>
+        <h2>Voluntariado</h2>
+        <p>¿Tienes tiempo y ganas de ayudar? Buscamos personas para paseos, limpieza, fotografía, eventos y más.</p>
+      </div>
+      <form id="form-voluntariado" class="voluntariado-form reveal">
+        <div class="form-row">
+          <div class="form-group"><label>Nombres *</label><input name="nombres" required></div>
+          <div class="form-group"><label>Apellidos *</label><input name="apellidos" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Correo *</label><input name="correo" type="email" required></div>
+          <div class="form-group"><label>Teléfono</label><input name="telefono" type="tel"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Disponibilidad *</label>
+            <select name="disponibilidad" required>
+              <option value="">Seleccione...</option>
+              <option value="Fines de semana">Fines de semana</option>
+              <option value="Entre semana">Entre semana</option>
+              <option value="Mañanas">Mañanas</option>
+              <option value="Tardes">Tardes</option>
+              <option value="Flexible">Flexible</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Áreas de interés *</label>
+            <select name="areas_interes" required>
+              <option value="">Seleccione...</option>
+              <option value="Paseo y socialización">Paseo y socialización</option>
+              <option value="Limpieza y cuidado">Limpieza y cuidado</option>
+              <option value="Fotografía y difusión">Fotografía y difusión</option>
+              <option value="Eventos de adopción">Eventos de adopción</option>
+              <option value="Apoyo veterinario">Apoyo veterinario</option>
+              <option value="Varias áreas">Varias áreas</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Experiencia previa con animales</label>
+          <textarea name="experiencia" rows="2" placeholder="Opcional: cuéntanos tu experiencia"></textarea>
+        </div>
+        <div class="form-group">
+          <label>¿Por qué quieres ser voluntario?</label>
+          <textarea name="mensaje" rows="3" placeholder="Opcional"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar solicitud de voluntariado</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="contacto" class="section section-contacto section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Visítanos</span>
+        <h2>Contacto y ubicación</h2>
+        <p>Estamos disponibles en el horario indicado. Escríbenos por WhatsApp para una respuesta más rápida.</p>
+      </div>
+      <div class="contacto-layout reveal">
+        <div class="contacto-info card-consulta">
+          <h3>Información del refugio</h3>
+          <ul class="contacto-list">
+            <li><span>📍</span><div><strong>Dirección</strong><p id="contacto-direccion">—</p></div></li>
+            <li><span>🕐</span><div><strong>Horario de atención</strong><p id="contacto-horario">—</p></div></li>
+            <li><span>📞</span><div><strong>Teléfono</strong><p id="contacto-telefono">—</p></div></li>
+            <li><span>📧</span><div><strong>Correo</strong><p><a id="contacto-correo" href="#">—</a></p></div></li>
+          </ul>
+          <div class="contacto-actions">
+            <a id="btn-whatsapp-contacto" class="btn btn-primary" href="#" target="_blank" rel="noopener">💬 Escríbenos por WhatsApp</a>
+            <a id="btn-maps" class="btn btn-outline" href="#" target="_blank" rel="noopener">🗺️ Abrir en Google Maps</a>
+          </div>
+        </div>
+        <div class="contacto-mapa">
+          <iframe id="mapa-embed" title="Ubicación del refugio" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner reveal">
+    <div class="container cta-banner-inner">
+      <div>
+        <h2>¿Listo para cambiar una vida?</h2>
+        <p>Explora nuestros animales disponibles y da el primer paso hacia una adopción responsable.</p>
+      </div>
+      <a href="#animales" class="btn btn-primary btn-lg">Ver animales ahora</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="logo-icon">🐾</span>
+        <h3 id="footer-nombre">Refugio de Animales</h3>
+        <p id="footer-descripcion">Rescate, rehabilitación y adopción responsable.</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Contáctanos</h4>
+        <ul>
+          <li>📧 <a id="footer-correo" href="mailto:contacto@refugio.org">contacto@refugio.org</a></li>
+          <li>📞 <span id="footer-telefono">+57 300 000 0000</span></li>
+          <li>📍 <span id="footer-direccion">Dirección del refugio</span></li>
+          <li>🕐 <span id="footer-horario">Horario de atención</span></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Enlaces</h4>
+        <a href="#animales">Adoptar</a>
+        <a href="#apoyar">Apoyar</a>
+        <a href="#voluntariado">Voluntariado</a>
+        <a href="#mi-solicitud">Mi solicitud</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Refugio de Animales — Ingeniería de Software II</p>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="modal-detalle">
+    <div class="modal modal-animal">
+      <button class="modal-close" id="cerrar-detalle">&times;</button>
+      <div id="detalle-contenido"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-postulacion">
+    <div class="modal modal-form modal-wide">
+      <div class="modal-header">
+        <h2>Encuesta de postulación</h2>
+        <button class="modal-close" id="cerrar-postulacion">&times;</button>
+      </div>
+      <form id="form-postulacion" class="modal-body">
+        <input type="hidden" name="id_animal" id="post-id-animal">
+        <input type="text" name="website" id="website" class="hp-field" tabindex="-1" autocomplete="off">
+        <div class="animal-resumen" id="post-resumen"></div>
+
+        <h3 class="form-section-title">Datos personales</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Nombres *</label><input name="nombres" required></div>
+          <div class="form-group"><label>Apellidos *</label><input name="apellidos" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Cédula *</label><input name="cedula" required></div>
+          <div class="form-group"><label>Teléfono</label><input name="telefono" type="tel"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Correo</label><input name="correo" type="email"></div>
+          <div class="form-group"><label>Dirección</label><input name="direccion"></div>
+        </div>
+
+        <h3 class="form-section-title">Encuesta del hogar</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tipo de vivienda *</label>
+            <select name="tipo_vivienda" required>
+              <option value="Casa">Casa</option>
+              <option value="Apartamento">Apartamento</option>
+              <option value="Finca">Finca</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>¿Tiene patio? *</label>
+            <select name="tiene_patio" required>
+              <option value="Si">Sí</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Adultos en el hogar</label><input name="adultos_hogar" type="number" min="0" value="1"></div>
+          <div class="form-group"><label>Niños en el hogar</label><input name="ninos_hogar" type="number" min="0" value="0"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Experiencia con mascotas *</label>
+            <select name="experiencia_mascotas" required>
+              <option value="Si">Sí, mucha</option>
+              <option value="Poca">Poca</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>¿Otras mascotas en casa? *</label>
+            <select name="otras_mascotas" required>
+              <option value="No">No</option>
+              <option value="Si">Sí</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Detalle otras mascotas</label>
+          <input name="detalle_otras_mascotas" placeholder="Ej: 1 gato adulto">
+        </div>
+        <div class="form-group">
+          <label>¿Por qué desea adoptar? *</label>
+          <textarea name="motivo_adopcion" rows="3" required></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tiempo diario para el animal</label>
+            <input name="tiempo_disponible" placeholder="Ej: 3 horas al día">
+          </div>
+          <div class="form-group">
+            <label>¿Acepta visitas de seguimiento? *</label>
+            <select name="acepta_visitas" required>
+              <option value="Si">Sí</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+        </div>
+
+        <h3 class="form-section-title">Verificación antibot 🔒</h3>
+        <div class="captcha-box">
+          <p id="captcha-pregunta">Cargando...</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Su respuesta *</label>
+              <input id="captcha-respuesta" type="number" required placeholder="Resultado">
+            </div>
+            <button type="button" class="btn btn-outline" id="btn-recargar-captcha">Otra pregunta</button>
+          </div>
+        </div>
+
+        <p class="form-note">Al enviar, el animal quedará <strong>en proceso de adopción</strong> y dejará de aparecer en el listado público.</p>
+        <button type="submit" class="btn btn-primary btn-block">Enviar postulación ❤️</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="exito-postulacion">
+    <div class="modal modal-form">
+      <div class="modal-body exito-box">
+        <div class="exito-icon">✅</div>
+        <h2>¡Postulación enviada!</h2>
+        <p>El animal ahora está <strong>en proceso de adopción</strong>. Nuestro equipo revisará tu encuesta y te contactará.</p>
+        <p>Si es aprobada, podrás ver y descargar tu certificado en <strong>Mi solicitud</strong> (con tu cédula) o por correo si lo registraste.</p>
+        <button type="button" class="btn btn-outline btn-block" id="btn-ir-mi-solicitud">Consultar mi solicitud</button>
+        <button class="btn btn-primary btn-block" id="cerrar-exito">Entendido</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <a id="whatsapp-float" class="whatsapp-float" href="#" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" title="WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="js/carousel.js"></script>
+  <script src="js/usuario.js"></script>
+</body>
+</html>
